@@ -1,0 +1,18 @@
+public class Programa {
+    public static void main(String[] args) {
+        ListaLigada lista = new ListaLigada();
+        lista.adicionar("AC - ACRE");
+        lista.adicionar("DF - DISTRITO FEDERAL");
+        lista.adicionar("SP - SAO PAULO");
+        lista.adicionar("RJ - RIO DE JANEIRO");
+
+        System.out.println("O primeiro valor : " + lista.getPrimeiro().getValor());
+        System.out.println("O ultimo valor e: " + lista.getUltimo().getValor());
+        
+        lista.remover("DF - DISTRITO FEDERAL");
+        System.out.println("O tamanho da lista e: " + lista.getTamanho());
+        
+        
+
+    }
+}
