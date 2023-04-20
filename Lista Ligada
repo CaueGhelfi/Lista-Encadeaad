@@ -1,0 +1,133 @@
+public class ListaLigada {
+    private Elemento primeiro;
+    private Elemento ultimo;
+    private int tamanho;
+
+    public ListaLigada() 
+    {
+        this.tamanho = 0;
+    }
+
+
+    public void adicionar(String novoValor) 
+    {
+        Elemento novoElemento = new Elemento(novoValor);
+        //Criando um novo elemento na lista "uma bolinha";
+
+        if (primeiro == null && ultimo == null)
+        {
+            this.primeiro = novoElemento;
+            this.ultimo = novoElemento;
+        } else 
+        {
+            this.ultimo.setProximo(novoElemento);
+            this.ultimo = novoElemento;
+        }
+        this.tamanho++;
+    }
+
+    public void remover(String valorProcurado)
+    {
+        Elemento anterior = null;
+        Elemento atual = this.primeiro;
+        for (int i = 0; i < this.getTamanho(); i++) 
+        {
+            if (atual.getValor().equalsIgnoreCase(valorProcurado)) 
+            {
+                if (atual == this.primeiro) 
+                {
+                    this.primeiro = atual.getproximo();
+                    atual.setProximo(null);
+                } else if (atual == this.ultimo) {
+                    this.ultimo = anterior;
+                    anterior.setProximo(null);
+                } else
+                    anterior.setProximo(atual.getproximo());
+                atual = null;
+                this.tamanho--;
+                break;
+            }
+            anterior = atual;
+            atual = atual.getproximo();
+        }
+
+
+    }
+
+    public void imprimePrimeiro() 
+    {
+        if (this.tamanho == 0)
+        {
+            System.out.println("Lista esta vazia!");
+        } else {
+            System.out.println("O primeiro valor e : " + this.getPrimeiro().getValor());
+        }
+    }
+
+    public void ImprimirList() 
+    {
+        int cont = 0;
+
+
+        if (this.tamanho == 0) 
+        {
+            System.out.println("Lista esta vazia");
+        } else {
+            while (this.getPrimeiro() != null) 
+            {
+                cont++;
+                System.out.println("No : " + primeiro.getValor());
+                System.out.println("Valor: " + cont++);
+                this.primeiro = this.getPrimeiro().getproximo();
+            }
+
+
+        }
+
+
+    }
+        
+
+    public Elemento get(int posicao) 
+    {
+        Elemento atual = this.primeiro;
+        for (int i = 0; i < posicao; i++) 
+        {
+            if (atual.getproximo() != null) 
+            {
+                atual = atual.getproximo();
+            }
+        }
+        return atual;
+    }
+
+    public Elemento getPrimeiro() 
+    {
+        return primeiro;
+    }
+
+    public void setPrimeiro(Elemento primeiro) 
+    {
+        this.primeiro = primeiro;
+    }
+
+    public Elemento getUltimo() 
+    {
+        return ultimo;
+    }
+
+    public void setTamanho(int tamanho) 
+    {
+        this.tamanho = tamanho;
+    }
+
+    public void setUltimo(Elemento ultimo) 
+    {
+        this.ultimo = ultimo;
+    }
+
+    public int getTamanho() 
+    {
+        return tamanho;
+    }
+}
